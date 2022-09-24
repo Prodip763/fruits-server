@@ -45,7 +45,7 @@ async function run() {
                   const message= `data added successfully`
                   return res.send({result, message});
             }
-            else if(item.action === 'dec'){
+            else if(item.action === 'dec' && item.amount > 0){
                 
                 const decrese = item.amount -1;
                 const data = {
@@ -59,6 +59,12 @@ async function run() {
                   return res.send({result, message});
             }
 
+        });
+
+        app.post('/product', async(req, res)=>{
+            const newProduct = req.body;
+            const result = await productCollection.insertOne(newProduct);
+            res.send(result);
         })
 
 
