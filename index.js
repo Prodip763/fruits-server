@@ -91,13 +91,23 @@ async function run() {
             res.send(result);
         });
 
+        // my item
+
+        // app.get("/product/:email", async (req, res) => {
+        //     const email = req.params.email;
+        //     const filter = { email: email };
+        //     const cursor = productCollection.find(filter);
+        //     const fruits = await cursor.toArray();
+        //     res.send(fruits);
+        //   });
+
         //delete
         app.delete('/product/:id', async(req, res)=>{
             const id = req.params.id;
             const query = {_id: ObjectId(id)};
             const result = await productCollection.deleteOne(query);
             res.send(result);
-        })
+        });
 
 
     }
@@ -117,6 +127,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log('Lisenting a port', port);
 });
-
-// fruitsdb
-// mPYr28NdU4GhOiwM
